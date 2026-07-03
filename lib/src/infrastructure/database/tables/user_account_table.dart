@@ -10,5 +10,5 @@ class UserAccountTable extends Table {
   TextColumn get username => text()();
   TextColumn get passwordHash => text()();
   IntColumn get roleId => integer().references(Role, #id)();
-  BoolColumn get isActive => boolean().withDefault(false as Expression<bool>)();
+  BoolColumn get isActive => boolean().withDefault(const Constant(true))();
 }

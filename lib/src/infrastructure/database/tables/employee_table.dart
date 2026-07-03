@@ -8,5 +8,5 @@ class Employee extends Table {
   IntColumn get personId => integer().references(Person, #id)();
   TextColumn get jobTitle => text().nullable()();
   DateTimeColumn get hireDate => dateTime().withDefault(currentDateAndTime)();
-  BoolColumn get status => boolean().withDefault(false as Expression<bool>)();
+  BoolColumn get status => boolean().withDefault(const Constant(true))();
 }
