@@ -122,7 +122,7 @@ class AppShell extends ConsumerWidget {
           children: [
             // Sidebar Navigation (Stitch: 280px width, 1px border on the left side in RTL)
             Container(
-              width: 280.w,
+              width: 240,
               decoration: BoxDecoration(
                 color: theme.colorScheme.surfaceContainerLow,
                 border: Border(

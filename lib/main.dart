@@ -8,8 +8,7 @@ Future<void> main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   
   await EasyLocalization.ensureInitialized();
-  await dotenv.load(fileName: '.env');
-  
+
   await AppConfig.init();
 
   runApp(

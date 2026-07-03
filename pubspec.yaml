@@ -16,7 +16,6 @@ dependencies:
 
   # Networking
   internet_connection_checker_plus: ^2.9.1+2
-  dio: ^5.9.2
 
   # State Management
   fpdart: ^1.2.0
@@ -50,9 +49,6 @@ dependencies:
   flutter_animate: ^4.5.2
   smooth_page_indicator: ^2.0.1
 
-  # Environment
-  flutter_dotenv: ^6.0.0
-
   # Logging
   logger: ^2.6.2
 
@@ -73,6 +69,8 @@ dependencies:
 
   flutter_native_splash: ^2.4.7
   google_fonts: ^8.1.0
+  sqflite: ^2.4.2+1
+  drift: ^2.34.0
 
 dev_dependencies:
   flutter_test:
@@ -89,5 +87,4 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/translations/
-    - .env
 
