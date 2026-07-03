@@ -13,28 +13,28 @@ class DashboardScreen extends ConsumerWidget {
         title: 'إجمالي الطلاب المسجلين',
         value: '١,٢٤٠',
         subTitle: '+١٢ طالب هذا الأسبوع',
-        icon: HugeIcons.strokeRoundedStudent,
+        icon: Icons.school_outlined,
         color: theme.colorScheme.primary,
       ),
       _StatItem(
         title: 'المعلمون النشطون',
         value: '٤٨',
         subTitle: 'في جميع الأقسام الدراسية',
-        icon: HugeIcons.strokeRoundedTeacher,
+        icon: Icons.person_outline,
         color: theme.colorScheme.secondary,
       ),
       _StatItem(
         title: 'المقبوضات المالية اليوم',
-        value: '١٥,٤٠٠ ج.م',
+        value: '١٥,٤٠٠ ج م',
         subTitle: 'إجمالي سندات القبض اليوم',
-        icon: HugeIcons.strokeRoundedCoins,
+        icon: Icons.payments_outlined,
         color: Colors.green,
       ),
       _StatItem(
         title: 'نسبة الحضور اليومي',
         value: '٩٤.٢٪',
         subTitle: 'حضور الطلاب والموظفين',
-        icon: HugeIcons.strokeRoundedCalendar03,
+        icon: Icons.calendar_month_outlined,
         color: Colors.orange,
       ),
     ];
@@ -133,19 +133,19 @@ class DashboardScreen extends ConsumerWidget {
                         children: [
                           _QuickActionButton(
                             title: 'تسجيل طالب جديد',
-                            icon: HugeIcons.strokeRoundedUserAdd01,
+                            icon: Icons.person_add_alt_1_outlined,
                             onTap: () => context.go('/students/form'),
                           ),
                           const Divider(),
                           _QuickActionButton(
                             title: 'إنشاء سند قبض مالي',
-                            icon: HugeIcons.strokeRoundedAddFormat,
+                            icon: Icons.receipt_long_outlined,
                             onTap: () => context.go('/finance/receipts/new'),
                           ),
                           const Divider(),
                           _QuickActionButton(
                             title: 'رصد درجات اختبار',
-                            icon: HugeIcons.strokeRoundedNotebook02,
+                            icon: Icons.assignment_outlined,
                             onTap: () => context.go('/academic/grades'),
                           ),
                         ],
@@ -198,11 +198,7 @@ class _QuickActionButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 8.w),
         child: Row(
           children: [
-            HugeIcon(
-              icon: icon,
-              color: theme.colorScheme.primary,
-              size: 20.r,
-            ),
+            Icon(icon, color: theme.colorScheme.primary, size: 20.r),
             SizedBox(width: AppSpacing.md),
             Text(
               title,
@@ -211,11 +207,8 @@ class _QuickActionButton extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            HugeIcon(
-              icon: HugeIcons.strokeRoundedArrowRight01,
-              color: theme.colorScheme.onSurfaceVariant,
-              size: 16.r,
-            ),
+            Icon(Icons.arrow_forward_ios,
+                color: theme.colorScheme.onSurfaceVariant, size: 16.r),
           ],
         ),
       ),

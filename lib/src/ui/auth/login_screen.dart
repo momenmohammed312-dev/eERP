@@ -54,11 +54,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        HugeIcons.strokeRoundedSchoolShared01,
-                        color: theme.colorScheme.primary,
-                        size: 32.r,
-                      ),
+                      Icon(Icons.school_outlined,
+                          color: theme.colorScheme.primary, size: 32.r),
                       SizedBox(width: AppSpacing.sm),
                       Text(
                         'بوابة الإدارة',
@@ -122,8 +119,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         },
                         icon: Icon(
                           _isPasswordVisible
-                              ? HugeIcons.strokeRoundedView
-                              : HugeIcons.strokeRoundedViewOff,
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
                           size: 20.r,
                         ),
                       ),

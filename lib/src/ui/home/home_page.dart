@@ -29,7 +29,7 @@ class HomePage extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               AppIcon(
-                icon: HugeIcons.strokeRoundedHome01,
+                icon: Icons.home_outlined,
                 size: 60.sp,
                 color: colorScheme.primary,
               ),

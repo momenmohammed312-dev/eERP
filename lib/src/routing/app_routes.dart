@@ -7,6 +7,7 @@ abstract final class AppRoutes {
 
   // Root States
   static const String splash = '/splash';
+  static const String onboarding = '/onboarding';
   static const String login = '/login';
   static const String loading = '/loading';
   static const String error = '/error';
@@ -14,6 +15,7 @@ abstract final class AppRoutes {
   static const String forbidden = '/forbidden';
 
   // Inside Shell Core
+  static const String home = dashboard;
   static const String dashboard = '/dashboard';
 
   // Students

@@ -71,11 +71,7 @@ class AppStatCard extends StatelessWidget {
               color: cardColor.withValues(alpha: 0.08),
               borderRadius: BorderRadius.circular(6.r),
             ),
-            child: HugeIcon(
-              icon: icon,
-              color: cardColor,
-              size: 24.r,
-            ),
+            child: Icon(icon, color: cardColor, size: 24.r),
           ),
         ],
       ),

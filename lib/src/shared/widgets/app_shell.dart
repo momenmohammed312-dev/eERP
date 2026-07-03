@@ -19,8 +19,8 @@ class AppShell extends ConsumerWidget {
         items: [
           _MenuItem(
             title: 'لوحة التحكم',
-            icon: HugeIcons.strokeRoundedDashboardCircle,
-            route: '/dashboard',
+            icon: Icons.dashboard_outlined,
+            route: AppRoutes.dashboard,
           ),
         ],
       ),
@@ -29,13 +29,13 @@ class AppShell extends ConsumerWidget {
         items: [
           _MenuItem(
             title: 'الطلاب',
-            icon: HugeIcons.strokeRoundedStudent,
-            route: '/students',
+            icon: Icons.school_outlined,
+            route: AppRoutes.students,
           ),
           _MenuItem(
             title: 'المعلمون',
-            icon: HugeIcons.strokeRoundedTeacher,
-            route: '/teachers',
+            icon: Icons.person_outline,
+            route: AppRoutes.teachers,
           ),
         ],
       ),
@@ -44,18 +44,18 @@ class AppShell extends ConsumerWidget {
         items: [
           _MenuItem(
             title: 'المواد الدراسية',
-            icon: HugeIcons.strokeRoundedBookOpen01,
-            route: '/academic/subjects',
+            icon: Icons.menu_book_outlined,
+            route: AppRoutes.subjects,
           ),
           _MenuItem(
             title: 'الفصول الدراسية',
-            icon: HugeIcons.strokeRoundedSchoolCard,
-            route: '/academic/classrooms',
+            icon: Icons.meeting_room_outlined,
+            route: AppRoutes.classrooms,
           ),
           _MenuItem(
             title: 'الجدول الدراسي',
-            icon: HugeIcons.strokeRoundedCalendar03,
-            route: '/academic/schedule',
+            icon: Icons.calendar_month_outlined,
+            route: AppRoutes.schedule,
           ),
         ],
       ),
@@ -64,13 +64,33 @@ class AppShell extends ConsumerWidget {
         items: [
           _MenuItem(
             title: 'الرسوم والمصاريف',
-            icon: HugeIcons.strokeRoundedCoins,
-            route: '/finance/fees',
+            icon: Icons.payments_outlined,
+            route: AppRoutes.tuitionFees,
           ),
           _MenuItem(
             title: 'المبيعات والمقصف',
-            icon: HugeIcons.strokeRoundedShoppingCart01,
-            route: '/canteen/sales',
+            icon: Icons.shopping_cart_outlined,
+            route: AppRoutes.canteenSales,
+          ),
+        ],
+      ),
+      _MenuGroup(
+        title: 'الإدارة',
+        items: [
+          _MenuItem(
+            title: 'المكتبة',
+            icon: Icons.local_library_outlined,
+            route: AppRoutes.library,
+          ),
+          _MenuItem(
+            title: 'المخزون',
+            icon: Icons.inventory_2_outlined,
+            route: AppRoutes.inventory,
+          ),
+          _MenuItem(
+            title: 'التقارير',
+            icon: Icons.bar_chart_outlined,
+            route: AppRoutes.performanceReports,
           ),
         ],
       ),
@@ -79,8 +99,13 @@ class AppShell extends ConsumerWidget {
         items: [
           _MenuItem(
             title: 'الإعدادات العامة',
-            icon: HugeIcons.strokeRoundedSettings01,
-            route: '/settings',
+            icon: Icons.settings_outlined,
+            route: AppRoutes.settings,
+          ),
+          _MenuItem(
+            title: 'الإشعارات',
+            icon: Icons.notifications_outlined,
+            route: AppRoutes.notifications,
           ),
         ],
       ),
@@ -116,11 +141,8 @@ class AppShell extends ConsumerWidget {
                     alignment: Alignment.centerRight,
                     child: Row(
                       children: [
-                        Icon(
-                          HugeIcons.strokeRoundedSchoolShared01,
-                          color: theme.colorScheme.primary,
-                          size: 24.r,
-                        ),
+                        Icon(Icons.school_outlined,
+                            color: theme.colorScheme.primary, size: 24.r),
                         SizedBox(width: AppSpacing.sm),
                         Text(
                           'نظام إدارة المركز',
@@ -186,13 +208,12 @@ class AppShell extends ConsumerWidget {
                                     padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm),
                                     child: Row(
                                       children: [
-                                        HugeIcon(
-                                          icon: item.icon,
-                                          color: isActive
-                                              ? theme.colorScheme.primary
-                                              : theme.colorScheme.onSurfaceVariant,
-                                          size: 20.r,
-                                        ),
+                                        Icon(item.icon,
+                                            color: isActive
+                                                ? theme.colorScheme.primary
+                                                : theme.colorScheme
+                                                    .onSurfaceVariant,
+                                            size: 20.r),
                                         SizedBox(width: AppSpacing.md),
                                         Text(
                                           item.title,
@@ -251,12 +272,10 @@ class AppShell extends ConsumerWidget {
                         Row(
                           children: [
                             IconButton(
-                              onPressed: () => context.go('/notifications'),
-                              icon: HugeIcon(
-                                icon: HugeIcons.strokeRoundedNotification03,
-                                color: theme.colorScheme.onSurface,
-                                size: 20.r,
-                              ),
+                              onPressed: () => context.go(AppRoutes.notifications),
+                              icon: Icon(Icons.notifications_outlined,
+                                  color: theme.colorScheme.onSurface,
+                                  size: 20.r),
                             ),
                             SizedBox(width: AppSpacing.sm),
                             VerticalDivider(

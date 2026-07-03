@@ -13,8 +13,8 @@ class App extends StatelessWidget {
     return MaterialApp.router(
       title: 'edu_erp',
       debugShowCheckedModeBanner: false,
-      theme: buildLightTheme(primaryColorHex: '#36bdbf'),
-      darkTheme: buildDarkTheme(primaryColorHex: '#36bdbf'),
+      theme: buildLightTheme(primaryColorHex: '#2E5395'),
+      darkTheme: buildDarkTheme(primaryColorHex: '#2E5395'),
       themeMode: ThemeMode.system,
       routerConfig: appRouter,
       localizationsDelegates: context.localizationDelegates,

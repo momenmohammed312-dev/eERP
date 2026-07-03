@@ -16,6 +16,10 @@ abstract final class AppSpacing {
   static const double _md = 16;
   static const double _lg = 24;
   static const double _xl = 32;
+  static const double _xxxl = 48;
+
+  /// 2 px
+  static double get xxs => _xxs.r;
 
   /// 4 px
   static double get xs => _xs.r;
@@ -31,6 +35,9 @@ abstract final class AppSpacing {
 
   /// 32 px
   static double get xl => _xl.r;
+
+  /// 48 px
+  static double get xxxl => _xxxl.r;
 
   // ── Semantic aliases ──────────────────────────────────────────────────────
 
