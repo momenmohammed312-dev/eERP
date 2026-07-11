@@ -17,4 +17,6 @@ Future<void> main() async {
       ),
     ),
   );
+
+  widgetsBinding.addPostFrameCallback((_) => FlutterNativeSplash.remove());
 }
