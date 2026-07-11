@@ -8,7 +8,7 @@ class ExpensesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllExpensesUseCase);
+    final getAll = ref.watch(getAllExpensesUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(

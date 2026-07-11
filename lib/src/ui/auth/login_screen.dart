@@ -1,4 +1,5 @@
 import '../../imports/imports.dart';
+import 'providers/local_auth_provider.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -20,11 +21,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     super.dispose();
   }
 
-  void _handleLogin() {
-    if (_formKey.currentState?.validate() ?? false) {
-      // Direct navigation to dashboard without database integration in this phase
-      context.go('/dashboard');
-    }
+  void _handleLogin() async {
+    if (!(_formKey.currentState?.validate() ?? false)) return;
+    final ok = await loginLocal(
+        ref, _usernameController.text, _passwordController.text);
+    if (!mounted) return;
+    if (ok) context.go(AppRoutes.dashboard);
   }
 
   @override

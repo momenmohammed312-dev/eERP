@@ -8,8 +8,8 @@ class WalletScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getWallet = ref.read(getWalletByStudentUseCase);
-    final getTx = ref.read(getWalletTransactionsUseCase);
+    final getWallet = ref.watch(getWalletByStudentUseCase);
+    final getTx = ref.watch(getWalletTransactionsUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(

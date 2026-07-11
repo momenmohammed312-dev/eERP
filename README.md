@@ -1,257 +1,105 @@
-# Education ERP System
+# edu_erp — Educational ERP
 
-A comprehensive ERP (Enterprise Resource Planning) system designed to manage educational institutions such as **Nurseries, Learning Centers, Language Institutes, Quran Centers, and Training Academies** from a single platform.
-
-The system aims to simplify daily operations, improve administrative efficiency, and provide a scalable foundation for educational organizations.
+A desktop ERP system for managing educational institutions (nurseries, learning centers, language institutes, Quran centers, training academies) built with **Flutter Desktop** and **local-only** data persistence.
 
 ---
 
-## ✨ Features
+## Tech Stack
 
-### 👨‍🎓 Student Management
-
-* Student registration
-* Student profile management
-* Student status
-* Multiple course enrollment
-* Student history
-* Notes and attachments
-
-### 👨‍👩‍👧 Parent Management
-
-* Parent profiles
-* Multiple students per parent
-* Contact information
-* Payment tracking
-
-### 👨‍🏫 Teacher Management
-
-* Teacher profiles
-* Subject assignment
-* Course assignment
-* Attendance
-* Salary information
-
-### 👨‍💼 Employee Management
-
-* Employee records
-* Roles and permissions
-* Attendance management
-
-### 📚 Subject Management
-
-Create unlimited subjects, including:
-
-* Arabic
-* English
-* Mathematics
-* Science
-* Quran
-* Tajweed
-* Islamic Studies
-* Programming
-* Robotics
-* Drawing
-* Music
-* Any custom subject
-
-### 🎓 Course Management
-
-* Course creation
-* Teacher assignment
-* Capacity management
-* Scheduling
-* Pricing
-* Student enrollment
-
-### 🏫 Classroom Management
-
-* Classroom creation
-* Capacity management
-* Student allocation
-* Teacher allocation
-
-### ✅ Attendance System
-
-* Student attendance
-* Teacher attendance
-* Employee attendance
-* Daily and monthly reports
-
-### 💰 Finance Management
-
-* Tuition fees
-* Installments
-* Discounts
-* Receipts
-* Payment history
-
-### 👛 Student Wallet
-
-* Recharge balance
-* Balance tracking
-* Purchase history
-* Wallet transactions
-
-### 🍔 Canteen Management
-
-* Product management
-* Categories
-* Inventory
-* Cash sales
-* Wallet payments
-* Sales reports
-
-### 📖 Books & Digital Resources
-
-* Book management
-* Book sales
-* PDF resources
-* Worksheets
-* Exams
-* Educational documents
-
-### 📊 Reports
-
-Generate reports for:
-
-* Students
-* Parents
-* Teachers
-* Employees
-* Courses
-* Attendance
-* Finance
-* Canteen
-* Books
-* Revenue
-
-### ⚙️ Settings
-
-* Subjects
-* Courses
-* Academic Year *(Optional)*
-* Terms *(Optional)*
-* User Roles
-* Permissions
-* Institution Information
+| Area | Choice |
+|------|--------|
+| Platform | Flutter Desktop (Windows) |
+| Architecture | Clean Architecture (UI → Application → Domain → Infrastructure) |
+| State management | Riverpod |
+| Navigation | go_router |
+| Data layer | Drift (SQLite) — no REST, no remote auth |
+| Localization | easy_localization (ar primary, en optional) |
+| UI | ScreenUtil, custom minimalist theme |
 
 ---
 
-# 🎯 Project Goals
-
-* Centralize educational management.
-* Reduce paperwork.
-* Improve operational efficiency.
-* Support multiple educational models.
-* Provide a scalable ERP platform.
-* Simplify reporting and decision-making.
-
----
-
-# 🏢 Target Institutions
-
-This system is suitable for:
-
-* Nurseries
-* Learning Centers
-* Language Centers
-* Quran Centers
-* Islamic Education Centers
-* Training Institutes
-* Educational Academies
-
----
-
-# 🚀 Future Roadmap
-
-* Parent Portal
-* Teacher Portal
-* Student Portal
-* Mobile Application
-* Multi-Branch Support
-* Online Registration
-* Online Payments
-* SMS & Email Notifications
-* QR Code Attendance
-* Barcode Support
-* AI-Powered Reports
-* Dashboard Analytics
-
----
-
-# 📂 Proposed Modules
+## Architecture
 
 ```text
-Education ERP
-│
-├── Authentication
-├── Authorization
-├── Student Management
-├── Parent Management
-├── Teacher Management
-├── Employee Management
-├── Subject Management
-├── Course Management
-├── Classroom Management
-├── Enrollment Management
-├── Attendance Management
-├── Finance Management
-├── Wallet Management
-├── Canteen Management
-├── Book Management
-├── Digital Resources
-├── Reports
-└── Settings
+lib/src/
+├── ui/{domain}/              # screens, widgets, riverpod providers
+├── application/{domain}/use_cases/  # one class per operation
+├── domain/{domain}/
+│   ├── entities/             # pure Dart, no Flutter/Drift imports
+│   └── repositories/         # abstract interfaces only
+├── infrastructure/
+│   ├── database/             # Drift tables + DAOs
+│   ├── repositories/         # impl of domain interfaces
+│   └── devices/              # fingerprint adapter (stub)
+├── routing/
+├── services/
+└── theme/
+```
+
+**Domains:** person, academic, attendance, finance, wallet, canteen, library, settings.
+
+---
+
+## Features
+
+### Student Management
+* Registration, profiles, status tracking
+* Multiple course enrollment
+* Student history, notes, attachments
+
+### Guardian Management
+* Guardian profiles linked to students
+* Contact information, payment tracking
+
+### Teacher & Employee Management
+* Profiles, subject/course assignment
+* Attendance, salary/payroll
+
+### Academic
+* Programs, courses, classrooms, schedules
+* Exams, grades, section assignments
+
+### Attendance
+* Student, teacher, employee attendance
+* Fingerprint device integration (adapter pattern, stub ready)
+
+### Finance
+* Tuition fees, receipts, expenses, payroll
+* Financial reports
+
+### Wallet
+* Student wallet recharge, balance tracking
+* Transaction history
+
+### Canteen
+* Product management (name, price, stock)
+* Sales tracking (cash + wallet)
+
+### Library
+* Book management, borrowing records
+
+### Settings
+* User accounts, roles, permissions
+* Institution configuration
+
+---
+
+## Getting Started
+
+```bash
+flutter pub get
+dart run build_runner build
+flutter run -d windows
 ```
 
 ---
 
-# 🛠️ Suggested Technology Stack
+## Project Status
 
-### Frontend
-
-* Flutter
-
-### Backend
-
-* ASP.NET Core Web API
-
-### Database
-
-* PostgreSQL
-
-### ORM
-
-* Entity Framework Core
-
-### Authentication
-
-* JWT Authentication
-
-### Architecture
-
-* Clean Architecture
-* Domain-Driven Design (DDD)
-* Repository Pattern
-* Dependency Injection
+**Active development** — core modules implemented, UI screens being built out.
 
 ---
 
-# 📌 Status
+## License
 
-🚧 **Project Planning Phase**
-
-The project is currently under analysis and system design before implementation.
-
----
-
-# 📄 License
-
-This project is licensed under the **MIT License**.
-
----
-
-## ⭐ Vision
-
-Build a modern, scalable, and flexible Education ERP that can serve institutions of all sizes—from small nurseries to large educational centers—through a clean architecture, modular design, and a user-friendly experience.
+MIT

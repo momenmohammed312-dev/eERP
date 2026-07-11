@@ -7,7 +7,7 @@ class SectionAssignmentScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllSectionAssignmentsUseCase);
+    final getAll = ref.watch(getAllSectionAssignmentsUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: FutureBuilder<List<SectionAssignmentEntity>>(

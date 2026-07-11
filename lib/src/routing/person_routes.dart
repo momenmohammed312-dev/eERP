@@ -15,6 +15,7 @@ import '../ui/person/employees/employee_profile_screen.dart';
 import '../ui/person/roles/role_list_screen.dart';
 import '../ui/person/roles/role_form_screen.dart';
 import '../ui/person/accounts/user_account_list_screen.dart';
+import '../ui/person/user_account/user_account_form_screen.dart';
 
 List<RouteBase> buildPersonRoutes() => [
       GoRoute(
@@ -101,5 +102,10 @@ List<RouteBase> buildPersonRoutes() => [
         path: AppRoutes.userAccounts,
         name: 'userAccounts',
         builder: (_, __) => const UserAccountListScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.userAccountForm,
+        name: 'userAccountForm',
+        builder: (_, __) => const UserAccountFormScreen(),
       ),
     ];

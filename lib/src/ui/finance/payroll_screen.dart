@@ -7,7 +7,7 @@ class PayrollScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllPayrollsUseCase);
+    final getAll = ref.watch(getAllPayrollsUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(

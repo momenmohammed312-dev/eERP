@@ -8,7 +8,7 @@ class GuardianListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllGuardiansUseCase);
+    final getAll = ref.watch(getAllGuardiansUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(
@@ -26,7 +26,7 @@ class GuardianListScreen extends ConsumerWidget {
               ),
               SizedBox(width: AppSpacing.md),
               ElevatedButton.icon(
-                onPressed: () => context.go('/guardians/form'),
+                onPressed: () => context.go(AppRoutes.guardianForm),
                 icon: const Icon(Icons.add, size: 18),
                 label: const Text('إضافة ولي أمر'),
               ),

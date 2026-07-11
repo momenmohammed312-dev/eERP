@@ -6,7 +6,7 @@ class GradeEntryScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllGradesUseCase);
+    final getAll = ref.watch(getAllGradesUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: FutureBuilder(

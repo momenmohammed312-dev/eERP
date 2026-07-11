@@ -10,7 +10,7 @@ class StudentListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllStudentsUseCase);
+    final getAll = ref.watch(getAllStudentsUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(

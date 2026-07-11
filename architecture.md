@@ -1,6 +1,4 @@
-# MVVM layout
+# Architecture
 
-- View widgets in `presentation/views`
-- ViewModels in `presentation/view_models`
-- Models/entities in `domain/models`
-
+See [AGENTS.md](AGENTS.md) for the current architecture (Clean Architecture,
+4 layers: UI → Application → Domain → Infrastructure).

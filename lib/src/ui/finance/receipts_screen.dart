@@ -7,7 +7,7 @@ class ReceiptsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllReceiptsUseCase);
+    final getAll = ref.watch(getAllReceiptsUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(

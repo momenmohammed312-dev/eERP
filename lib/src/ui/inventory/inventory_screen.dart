@@ -7,7 +7,7 @@ class InventoryScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAllItems = ref.read(getAllInventoryItemsUseCase);
+    final getAllItems = ref.watch(getAllInventoryItemsUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(

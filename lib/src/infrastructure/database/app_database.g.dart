@@ -6681,7 +6681,7 @@ class $WalletTable extends Wallet with TableInfo<$WalletTable, WalletData> {
       'balance', aliasedName, false,
       type: DriftSqlType.double,
       requiredDuringInsert: false,
-      defaultValue: const Constant(0.0));
+      defaultValue: const Constant(0));
   @override
   List<GeneratedColumn> get $columns => [id, studentId, balance];
   @override
@@ -7547,6 +7547,261 @@ class CanteenSaleCompanion extends UpdateCompanion<CanteenSaleData> {
           ..write('saleDate: $saleDate, ')
           ..write('items: $items, ')
           ..write('recordedBy: $recordedBy')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $CanteenProductTable extends CanteenProduct
+    with TableInfo<$CanteenProductTable, CanteenProductData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $CanteenProductTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+      'name', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _priceMeta = const VerificationMeta('price');
+  @override
+  late final GeneratedColumn<double> price = GeneratedColumn<double>(
+      'price', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  static const VerificationMeta _stockMeta = const VerificationMeta('stock');
+  @override
+  late final GeneratedColumn<int> stock = GeneratedColumn<int>(
+      'stock', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(0));
+  @override
+  List<GeneratedColumn> get $columns => [id, name, price, stock];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'canteen_product';
+  @override
+  VerificationContext validateIntegrity(Insertable<CanteenProductData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('price')) {
+      context.handle(
+          _priceMeta, price.isAcceptableOrUnknown(data['price']!, _priceMeta));
+    } else if (isInserting) {
+      context.missing(_priceMeta);
+    }
+    if (data.containsKey('stock')) {
+      context.handle(
+          _stockMeta, stock.isAcceptableOrUnknown(data['stock']!, _stockMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  CanteenProductData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return CanteenProductData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      name: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      price: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}price'])!,
+      stock: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}stock'])!,
+    );
+  }
+
+  @override
+  $CanteenProductTable createAlias(String alias) {
+    return $CanteenProductTable(attachedDatabase, alias);
+  }
+}
+
+class CanteenProductData extends DataClass
+    implements Insertable<CanteenProductData> {
+  final int id;
+  final String name;
+  final double price;
+  final int stock;
+  const CanteenProductData(
+      {required this.id,
+      required this.name,
+      required this.price,
+      required this.stock});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['name'] = Variable<String>(name);
+    map['price'] = Variable<double>(price);
+    map['stock'] = Variable<int>(stock);
+    return map;
+  }
+
+  CanteenProductCompanion toCompanion(bool nullToAbsent) {
+    return CanteenProductCompanion(
+      id: Value(id),
+      name: Value(name),
+      price: Value(price),
+      stock: Value(stock),
+    );
+  }
+
+  factory CanteenProductData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return CanteenProductData(
+      id: serializer.fromJson<int>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      price: serializer.fromJson<double>(json['price']),
+      stock: serializer.fromJson<int>(json['stock']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'name': serializer.toJson<String>(name),
+      'price': serializer.toJson<double>(price),
+      'stock': serializer.toJson<int>(stock),
+    };
+  }
+
+  CanteenProductData copyWith(
+          {int? id, String? name, double? price, int? stock}) =>
+      CanteenProductData(
+        id: id ?? this.id,
+        name: name ?? this.name,
+        price: price ?? this.price,
+        stock: stock ?? this.stock,
+      );
+  CanteenProductData copyWithCompanion(CanteenProductCompanion data) {
+    return CanteenProductData(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      price: data.price.present ? data.price.value : this.price,
+      stock: data.stock.present ? data.stock.value : this.stock,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CanteenProductData(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('price: $price, ')
+          ..write('stock: $stock')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, name, price, stock);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is CanteenProductData &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.price == this.price &&
+          other.stock == this.stock);
+}
+
+class CanteenProductCompanion extends UpdateCompanion<CanteenProductData> {
+  final Value<int> id;
+  final Value<String> name;
+  final Value<double> price;
+  final Value<int> stock;
+  const CanteenProductCompanion({
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.price = const Value.absent(),
+    this.stock = const Value.absent(),
+  });
+  CanteenProductCompanion.insert({
+    this.id = const Value.absent(),
+    required String name,
+    required double price,
+    this.stock = const Value.absent(),
+  })  : name = Value(name),
+        price = Value(price);
+  static Insertable<CanteenProductData> custom({
+    Expression<int>? id,
+    Expression<String>? name,
+    Expression<double>? price,
+    Expression<int>? stock,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (price != null) 'price': price,
+      if (stock != null) 'stock': stock,
+    });
+  }
+
+  CanteenProductCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? name,
+      Value<double>? price,
+      Value<int>? stock}) {
+    return CanteenProductCompanion(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      price: price ?? this.price,
+      stock: stock ?? this.stock,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (price.present) {
+      map['price'] = Variable<double>(price.value);
+    }
+    if (stock.present) {
+      map['stock'] = Variable<int>(stock.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CanteenProductCompanion(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('price: $price, ')
+          ..write('stock: $stock')
           ..write(')'))
         .toString();
   }
@@ -9292,6 +9547,270 @@ class SupplierCompanion extends UpdateCompanion<SupplierData> {
   }
 }
 
+class $SettingTable extends Setting with TableInfo<$SettingTable, SettingData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SettingTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _keyMeta = const VerificationMeta('key');
+  @override
+  late final GeneratedColumn<String> key = GeneratedColumn<String>(
+      'key', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
+  static const VerificationMeta _valueMeta = const VerificationMeta('value');
+  @override
+  late final GeneratedColumn<String> value = GeneratedColumn<String>(
+      'value', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descriptionMeta =
+      const VerificationMeta('description');
+  @override
+  late final GeneratedColumn<String> description = GeneratedColumn<String>(
+      'description', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns => [id, key, value, description];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'setting';
+  @override
+  VerificationContext validateIntegrity(Insertable<SettingData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('key')) {
+      context.handle(
+          _keyMeta, key.isAcceptableOrUnknown(data['key']!, _keyMeta));
+    } else if (isInserting) {
+      context.missing(_keyMeta);
+    }
+    if (data.containsKey('value')) {
+      context.handle(
+          _valueMeta, value.isAcceptableOrUnknown(data['value']!, _valueMeta));
+    } else if (isInserting) {
+      context.missing(_valueMeta);
+    }
+    if (data.containsKey('description')) {
+      context.handle(
+          _descriptionMeta,
+          description.isAcceptableOrUnknown(
+              data['description']!, _descriptionMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  SettingData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SettingData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      key: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}key'])!,
+      value: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}value'])!,
+      description: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}description']),
+    );
+  }
+
+  @override
+  $SettingTable createAlias(String alias) {
+    return $SettingTable(attachedDatabase, alias);
+  }
+}
+
+class SettingData extends DataClass implements Insertable<SettingData> {
+  final int id;
+  final String key;
+  final String value;
+  final String? description;
+  const SettingData(
+      {required this.id,
+      required this.key,
+      required this.value,
+      this.description});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['key'] = Variable<String>(key);
+    map['value'] = Variable<String>(value);
+    if (!nullToAbsent || description != null) {
+      map['description'] = Variable<String>(description);
+    }
+    return map;
+  }
+
+  SettingCompanion toCompanion(bool nullToAbsent) {
+    return SettingCompanion(
+      id: Value(id),
+      key: Value(key),
+      value: Value(value),
+      description: description == null && nullToAbsent
+          ? const Value.absent()
+          : Value(description),
+    );
+  }
+
+  factory SettingData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return SettingData(
+      id: serializer.fromJson<int>(json['id']),
+      key: serializer.fromJson<String>(json['key']),
+      value: serializer.fromJson<String>(json['value']),
+      description: serializer.fromJson<String?>(json['description']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'key': serializer.toJson<String>(key),
+      'value': serializer.toJson<String>(value),
+      'description': serializer.toJson<String?>(description),
+    };
+  }
+
+  SettingData copyWith(
+          {int? id,
+          String? key,
+          String? value,
+          Value<String?> description = const Value.absent()}) =>
+      SettingData(
+        id: id ?? this.id,
+        key: key ?? this.key,
+        value: value ?? this.value,
+        description: description.present ? description.value : this.description,
+      );
+  SettingData copyWithCompanion(SettingCompanion data) {
+    return SettingData(
+      id: data.id.present ? data.id.value : this.id,
+      key: data.key.present ? data.key.value : this.key,
+      value: data.value.present ? data.value.value : this.value,
+      description:
+          data.description.present ? data.description.value : this.description,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SettingData(')
+          ..write('id: $id, ')
+          ..write('key: $key, ')
+          ..write('value: $value, ')
+          ..write('description: $description')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, key, value, description);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is SettingData &&
+          other.id == this.id &&
+          other.key == this.key &&
+          other.value == this.value &&
+          other.description == this.description);
+}
+
+class SettingCompanion extends UpdateCompanion<SettingData> {
+  final Value<int> id;
+  final Value<String> key;
+  final Value<String> value;
+  final Value<String?> description;
+  const SettingCompanion({
+    this.id = const Value.absent(),
+    this.key = const Value.absent(),
+    this.value = const Value.absent(),
+    this.description = const Value.absent(),
+  });
+  SettingCompanion.insert({
+    this.id = const Value.absent(),
+    required String key,
+    required String value,
+    this.description = const Value.absent(),
+  })  : key = Value(key),
+        value = Value(value);
+  static Insertable<SettingData> custom({
+    Expression<int>? id,
+    Expression<String>? key,
+    Expression<String>? value,
+    Expression<String>? description,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (key != null) 'key': key,
+      if (value != null) 'value': value,
+      if (description != null) 'description': description,
+    });
+  }
+
+  SettingCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? key,
+      Value<String>? value,
+      Value<String?>? description}) {
+    return SettingCompanion(
+      id: id ?? this.id,
+      key: key ?? this.key,
+      value: value ?? this.value,
+      description: description ?? this.description,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (key.present) {
+      map['key'] = Variable<String>(key.value);
+    }
+    if (value.present) {
+      map['value'] = Variable<String>(value.value);
+    }
+    if (description.present) {
+      map['description'] = Variable<String>(description.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SettingCompanion(')
+          ..write('id: $id, ')
+          ..write('key: $key, ')
+          ..write('value: $value, ')
+          ..write('description: $description')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -9321,12 +9840,14 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $WalletTransactionTable walletTransaction =
       $WalletTransactionTable(this);
   late final $CanteenSaleTable canteenSale = $CanteenSaleTable(this);
+  late final $CanteenProductTable canteenProduct = $CanteenProductTable(this);
   late final $BookTable book = $BookTable(this);
   late final $BorrowingRecordTable borrowingRecord =
       $BorrowingRecordTable(this);
   late final $InventoryItemTable inventoryItem = $InventoryItemTable(this);
   late final $PurchaseOrderTable purchaseOrder = $PurchaseOrderTable(this);
   late final $SupplierTable supplier = $SupplierTable(this);
+  late final $SettingTable setting = $SettingTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -9355,11 +9876,13 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         wallet,
         walletTransaction,
         canteenSale,
+        canteenProduct,
         book,
         borrowingRecord,
         inventoryItem,
         purchaseOrder,
-        supplier
+        supplier,
+        setting
       ];
 }
 
@@ -17607,6 +18130,159 @@ typedef $$CanteenSaleTableProcessedTableManager = ProcessedTableManager<
     (CanteenSaleData, $$CanteenSaleTableReferences),
     CanteenSaleData,
     PrefetchHooks Function({bool studentId})>;
+typedef $$CanteenProductTableCreateCompanionBuilder = CanteenProductCompanion
+    Function({
+  Value<int> id,
+  required String name,
+  required double price,
+  Value<int> stock,
+});
+typedef $$CanteenProductTableUpdateCompanionBuilder = CanteenProductCompanion
+    Function({
+  Value<int> id,
+  Value<String> name,
+  Value<double> price,
+  Value<int> stock,
+});
+
+class $$CanteenProductTableFilterComposer
+    extends Composer<_$AppDatabase, $CanteenProductTable> {
+  $$CanteenProductTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get price => $composableBuilder(
+      column: $table.price, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get stock => $composableBuilder(
+      column: $table.stock, builder: (column) => ColumnFilters(column));
+}
+
+class $$CanteenProductTableOrderingComposer
+    extends Composer<_$AppDatabase, $CanteenProductTable> {
+  $$CanteenProductTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get price => $composableBuilder(
+      column: $table.price, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get stock => $composableBuilder(
+      column: $table.stock, builder: (column) => ColumnOrderings(column));
+}
+
+class $$CanteenProductTableAnnotationComposer
+    extends Composer<_$AppDatabase, $CanteenProductTable> {
+  $$CanteenProductTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<double> get price =>
+      $composableBuilder(column: $table.price, builder: (column) => column);
+
+  GeneratedColumn<int> get stock =>
+      $composableBuilder(column: $table.stock, builder: (column) => column);
+}
+
+class $$CanteenProductTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $CanteenProductTable,
+    CanteenProductData,
+    $$CanteenProductTableFilterComposer,
+    $$CanteenProductTableOrderingComposer,
+    $$CanteenProductTableAnnotationComposer,
+    $$CanteenProductTableCreateCompanionBuilder,
+    $$CanteenProductTableUpdateCompanionBuilder,
+    (
+      CanteenProductData,
+      BaseReferences<_$AppDatabase, $CanteenProductTable, CanteenProductData>
+    ),
+    CanteenProductData,
+    PrefetchHooks Function()> {
+  $$CanteenProductTableTableManager(
+      _$AppDatabase db, $CanteenProductTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$CanteenProductTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$CanteenProductTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$CanteenProductTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> name = const Value.absent(),
+            Value<double> price = const Value.absent(),
+            Value<int> stock = const Value.absent(),
+          }) =>
+              CanteenProductCompanion(
+            id: id,
+            name: name,
+            price: price,
+            stock: stock,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String name,
+            required double price,
+            Value<int> stock = const Value.absent(),
+          }) =>
+              CanteenProductCompanion.insert(
+            id: id,
+            name: name,
+            price: price,
+            stock: stock,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$CanteenProductTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $CanteenProductTable,
+    CanteenProductData,
+    $$CanteenProductTableFilterComposer,
+    $$CanteenProductTableOrderingComposer,
+    $$CanteenProductTableAnnotationComposer,
+    $$CanteenProductTableCreateCompanionBuilder,
+    $$CanteenProductTableUpdateCompanionBuilder,
+    (
+      CanteenProductData,
+      BaseReferences<_$AppDatabase, $CanteenProductTable, CanteenProductData>
+    ),
+    CanteenProductData,
+    PrefetchHooks Function()>;
 typedef $$BookTableCreateCompanionBuilder = BookCompanion Function({
   Value<int> id,
   required String title,
@@ -18970,6 +19646,150 @@ typedef $$SupplierTableProcessedTableManager = ProcessedTableManager<
     (SupplierData, BaseReferences<_$AppDatabase, $SupplierTable, SupplierData>),
     SupplierData,
     PrefetchHooks Function()>;
+typedef $$SettingTableCreateCompanionBuilder = SettingCompanion Function({
+  Value<int> id,
+  required String key,
+  required String value,
+  Value<String?> description,
+});
+typedef $$SettingTableUpdateCompanionBuilder = SettingCompanion Function({
+  Value<int> id,
+  Value<String> key,
+  Value<String> value,
+  Value<String?> description,
+});
+
+class $$SettingTableFilterComposer
+    extends Composer<_$AppDatabase, $SettingTable> {
+  $$SettingTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get key => $composableBuilder(
+      column: $table.key, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get value => $composableBuilder(
+      column: $table.value, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get description => $composableBuilder(
+      column: $table.description, builder: (column) => ColumnFilters(column));
+}
+
+class $$SettingTableOrderingComposer
+    extends Composer<_$AppDatabase, $SettingTable> {
+  $$SettingTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get key => $composableBuilder(
+      column: $table.key, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get value => $composableBuilder(
+      column: $table.value, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get description => $composableBuilder(
+      column: $table.description, builder: (column) => ColumnOrderings(column));
+}
+
+class $$SettingTableAnnotationComposer
+    extends Composer<_$AppDatabase, $SettingTable> {
+  $$SettingTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get key =>
+      $composableBuilder(column: $table.key, builder: (column) => column);
+
+  GeneratedColumn<String> get value =>
+      $composableBuilder(column: $table.value, builder: (column) => column);
+
+  GeneratedColumn<String> get description => $composableBuilder(
+      column: $table.description, builder: (column) => column);
+}
+
+class $$SettingTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $SettingTable,
+    SettingData,
+    $$SettingTableFilterComposer,
+    $$SettingTableOrderingComposer,
+    $$SettingTableAnnotationComposer,
+    $$SettingTableCreateCompanionBuilder,
+    $$SettingTableUpdateCompanionBuilder,
+    (SettingData, BaseReferences<_$AppDatabase, $SettingTable, SettingData>),
+    SettingData,
+    PrefetchHooks Function()> {
+  $$SettingTableTableManager(_$AppDatabase db, $SettingTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$SettingTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SettingTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SettingTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> key = const Value.absent(),
+            Value<String> value = const Value.absent(),
+            Value<String?> description = const Value.absent(),
+          }) =>
+              SettingCompanion(
+            id: id,
+            key: key,
+            value: value,
+            description: description,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String key,
+            required String value,
+            Value<String?> description = const Value.absent(),
+          }) =>
+              SettingCompanion.insert(
+            id: id,
+            key: key,
+            value: value,
+            description: description,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$SettingTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $SettingTable,
+    SettingData,
+    $$SettingTableFilterComposer,
+    $$SettingTableOrderingComposer,
+    $$SettingTableAnnotationComposer,
+    $$SettingTableCreateCompanionBuilder,
+    $$SettingTableUpdateCompanionBuilder,
+    (SettingData, BaseReferences<_$AppDatabase, $SettingTable, SettingData>),
+    SettingData,
+    PrefetchHooks Function()>;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -19018,6 +19838,8 @@ class $AppDatabaseManager {
       $$WalletTransactionTableTableManager(_db, _db.walletTransaction);
   $$CanteenSaleTableTableManager get canteenSale =>
       $$CanteenSaleTableTableManager(_db, _db.canteenSale);
+  $$CanteenProductTableTableManager get canteenProduct =>
+      $$CanteenProductTableTableManager(_db, _db.canteenProduct);
   $$BookTableTableManager get book => $$BookTableTableManager(_db, _db.book);
   $$BorrowingRecordTableTableManager get borrowingRecord =>
       $$BorrowingRecordTableTableManager(_db, _db.borrowingRecord);
@@ -19027,4 +19849,6 @@ class $AppDatabaseManager {
       $$PurchaseOrderTableTableManager(_db, _db.purchaseOrder);
   $$SupplierTableTableManager get supplier =>
       $$SupplierTableTableManager(_db, _db.supplier);
+  $$SettingTableTableManager get setting =>
+      $$SettingTableTableManager(_db, _db.setting);
 }

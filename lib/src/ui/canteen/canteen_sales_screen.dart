@@ -8,7 +8,7 @@ class CanteenSalesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllCanteenSalesUseCase);
+    final getAll = ref.watch(getAllCanteenSalesUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(

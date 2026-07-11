@@ -34,6 +34,13 @@ class WalletRepositoryImpl implements WalletRepository {
       _dao.updateBalance(id, newBalance);
 
   @override
+  Future<void> deleteWallet(int id) => _dao.deleteWallet(id);
+
+  @override
+  Future<List<WalletEntity>> getAllWallets() async =>
+      (await _dao.getAllWallets()).map(_toEntity).toList();
+
+  @override
   Future<List<WalletTransactionEntity>> getTransactions(int walletId) async =>
       (await _dao.getTransactions(walletId)).map(_txToEntity).toList();
 

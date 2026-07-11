@@ -7,7 +7,7 @@ class BorrowingLogScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllBorrowingsUseCase);
+    final getAll = ref.watch(getAllBorrowingsUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(

@@ -13,6 +13,9 @@ class WalletDao {
   Future<int> updateBalance(int id, double balance) =>
       (db.update(db.wallet)..where((t) => t.id.equals(id)))
           .write(WalletCompanion(balance: Value(balance)));
+  Future<int> deleteWallet(int id) =>
+      (db.delete(db.wallet)..where((t) => t.id.equals(id))).go();
+  Future<List<WalletData>> getAllWallets() => db.select(db.wallet).get();
 
   Future<int> insertTransaction(WalletTransactionCompanion data) =>
       db.into(db.walletTransaction).insert(data);

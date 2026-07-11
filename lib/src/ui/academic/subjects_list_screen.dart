@@ -6,7 +6,7 @@ class SubjectsListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllSubjectsUseCase);
+    final getAll = ref.watch(getAllSubjectsUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: FutureBuilder(

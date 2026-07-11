@@ -6,7 +6,7 @@ class EmployeeProfileScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getEmployee = ref.read(getEmployeeByIdUseCase);
+    final getEmployee = ref.watch(getEmployeeByIdUseCase);
     final id = int.tryParse(context.currentRoute.split('/').last) ?? 0;
 
     return FutureBuilder(

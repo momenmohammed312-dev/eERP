@@ -7,7 +7,7 @@ class PurchaseManagementScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllPurchaseOrdersUseCase);
+    final getAll = ref.watch(getAllPurchaseOrdersUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(

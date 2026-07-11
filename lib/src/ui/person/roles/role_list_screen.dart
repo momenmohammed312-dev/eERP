@@ -8,7 +8,7 @@ class RoleListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAllRoles = ref.read(getAllRolesUseCase);
+    final getAllRoles = ref.watch(getAllRolesUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(
@@ -26,7 +26,7 @@ class RoleListScreen extends ConsumerWidget {
               ),
               SizedBox(width: AppSpacing.md),
               ElevatedButton.icon(
-                onPressed: () => context.go('/roles/form'),
+                onPressed: () => context.go(AppRoutes.roleForm),
                 icon: const Icon(Icons.add, size: 18),
                 label: const Text('إضافة دور'),
               ),

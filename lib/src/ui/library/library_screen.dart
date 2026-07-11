@@ -7,7 +7,7 @@ class LibraryScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAllBooks = ref.read(getAllBooksUseCase);
+    final getAllBooks = ref.watch(getAllBooksUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(

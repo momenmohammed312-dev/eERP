@@ -6,7 +6,7 @@ class ExamManagementScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllExamsUseCase);
+    final getAll = ref.watch(getAllExamsUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: FutureBuilder(

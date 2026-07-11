@@ -6,7 +6,7 @@ class ClassScheduleScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllSchedulesUseCase);
+    final getAll = ref.watch(getAllSchedulesUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: FutureBuilder(

@@ -7,7 +7,7 @@ class TuitionFeesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllTuitionFeesUseCase);
+    final getAll = ref.watch(getAllTuitionFeesUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(

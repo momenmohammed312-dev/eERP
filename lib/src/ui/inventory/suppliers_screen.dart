@@ -8,7 +8,7 @@ class SuppliersScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllSuppliersUseCase);
+    final getAll = ref.watch(getAllSuppliersUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(

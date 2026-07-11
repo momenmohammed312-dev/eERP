@@ -6,7 +6,7 @@ class GuardianProfileScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getGuardian = ref.read(getGuardianByIdUseCase);
+    final getGuardian = ref.watch(getGuardianByIdUseCase);
     final id = int.tryParse(context.currentRoute.split('/').last) ?? 0;
 
     return FutureBuilder(

@@ -7,7 +7,7 @@ class StaffAttendanceScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getAll = ref.read(getAllAttendanceRecordsUseCase);
+    final getAll = ref.watch(getAllAttendanceRecordsUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(

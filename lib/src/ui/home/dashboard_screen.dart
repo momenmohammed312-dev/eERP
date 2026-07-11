@@ -1,216 +1,61 @@
 import '../../imports/imports.dart';
+import 'dashboard_providers.dart';
+import 'dashboard_stats.dart';
+import 'dashboard_recent_students.dart';
+import 'dashboard_quick_actions.dart';
 
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = context.theme;
-
-    // Dummy statistics matching standard ERP setup
-    final stats = [
-      _StatItem(
-        title: 'إجمالي الطلاب المسجلين',
-        value: '١,٢٤٠',
-        subTitle: '+١٢ طالب هذا الأسبوع',
-        icon: Icons.school_outlined,
-        color: theme.colorScheme.primary,
-      ),
-      _StatItem(
-        title: 'المعلمون النشطون',
-        value: '٤٨',
-        subTitle: 'في جميع الأقسام الدراسية',
-        icon: Icons.person_outline,
-        color: theme.colorScheme.secondary,
-      ),
-      const _StatItem(
-        title: 'المقبوضات المالية اليوم',
-        value: '١٥,٤٠٠ ج م',
-        subTitle: 'إجمالي سندات القبض اليوم',
-        icon: Icons.payments_outlined,
-        color: Colors.green,
-      ),
-      const _StatItem(
-        title: 'نسبة الحضور اليومي',
-        value: '٩٤.٢٪',
-        subTitle: 'حضور الطلاب والموظفين',
-        icon: Icons.calendar_month_outlined,
-        color: Colors.orange,
-      ),
-    ];
-
-    // Dummy recent activities
-    final recentStudents = [
-      ['محمد أحمد علي', 'الصف الثالث الثانوي', '١٢:٣٠ م'],
-      ['سارة محمود يوسف', 'الصف الأول الثانوي', '١١:١٥ ص'],
-      ['خالد عبد الرحمن', 'الصف الثاني الثانوي', '١٠:٤٥ ص'],
-      ['رنا طارق سعيد', 'الصف الثالث الثانوي', '٠٩:٢٠ ص'],
-    ];
-
+    final dataAsync = ref.watch(dashboardDataProvider);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Stat Cards Grid
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              crossAxisSpacing: AppSpacing.gutter,
-              mainAxisSpacing: AppSpacing.gutter,
-              childAspectRatio: 2.2,
-            ),
-            itemCount: stats.length,
-            itemBuilder: (context, index) {
-              final stat = stats[index];
-              return AppStatCard(
-                title: stat.title,
-                value: stat.value,
-                subTitle: stat.subTitle,
-                icon: stat.icon,
-                color: stat.color,
-              );
-            },
-          ),
-          
-          SizedBox(height: AppSpacing.lg),
-          
-          // Dashboard Details Layout (Two columns: Table and summary widget)
-          Row(
+      child: dataAsync.when(
+        loading: () => const Center(
+          child: Padding(padding: EdgeInsets.all(48), child: CircularProgressIndicator()),
+        ),
+        error: (e, _) => Center(
+          child: Padding(padding: const EdgeInsets.all(48), child: Text('خطأ في تحميل البيانات: $e')),
+        ),
+        data: (data) {
+          final stats = computeDashboardStats(
+            students: data.students,
+            teachers: data.teachers,
+            receipts: data.receipts,
+            attendance: data.attendance,
+          );
+          return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Recent Registrations Table
-              Expanded(
-                flex: 2,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'آخر الطلاب المسجلين حديثاً',
-                      style: theme.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: AppSpacing.md),
-                    AppDataTable(
-                      columns: const ['اسم الطالب', 'الصف الدراسي', 'وقت التسجيل'],
-                      rows: recentStudents.map((student) {
-                        return [
-                          Text(student[0], style: const TextStyle(fontWeight: FontWeight.w600)),
-                          Text(student[1]),
-                          Text(student[2]),
-                        ];
-                      }).toList(),
-                    ),
-                  ],
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  crossAxisSpacing: AppSpacing.gutter,
+                  mainAxisSpacing: AppSpacing.gutter,
+                  childAspectRatio: 2.2,
                 ),
+                itemCount: stats.length,
+                itemBuilder: (_, i) {
+                  final s = stats[i];
+                  return AppStatCard(title: s.title, value: s.value, subTitle: s.subTitle, icon: s.icon, color: s.color);
+                },
               ),
-              
-              SizedBox(width: AppSpacing.gutter),
-              
-              // Direct Actions card
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'إجراءات سريعة',
-                      style: theme.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: AppSpacing.md),
-                    Container(
-                      padding: EdgeInsets.all(AppSpacing.md),
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.surface,
-                        border: Border.all(color: theme.colorScheme.outlineVariant),
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: Column(
-                        children: [
-                          _QuickActionButton(
-                            title: 'تسجيل طالب جديد',
-                            icon: Icons.person_add_alt_1_outlined,
-                            onTap: () => context.go('/students/form'),
-                          ),
-                          const Divider(),
-                          _QuickActionButton(
-                            title: 'إنشاء سند قبض مالي',
-                            icon: Icons.receipt_long_outlined,
-                            onTap: () => context.go('/finance/receipts/new'),
-                          ),
-                          const Divider(),
-                          _QuickActionButton(
-                            title: 'رصد درجات اختبار',
-                            icon: Icons.assignment_outlined,
-                            onTap: () => context.go('/academic/grades'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+              SizedBox(height: AppSpacing.lg),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(flex: 2, child: DashboardRecentStudents(students: data.students, personNames: data.personNames)),
+                  SizedBox(width: AppSpacing.gutter),
+                  const Expanded(child: DashboardQuickActions()),
+                ],
               ),
             ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _StatItem {
-  const _StatItem({
-    required this.title,
-    required this.value,
-    this.subTitle,
-    required this.icon,
-    required this.color,
-  });
-  final String title;
-  final String value;
-  final String? subTitle;
-  final IconData icon;
-  final Color color;
-}
-
-class _QuickActionButton extends StatelessWidget {
-  const _QuickActionButton({
-    required this.title,
-    required this.icon,
-    required this.onTap,
-  });
-
-  final String title;
-  final IconData icon;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = context.theme;
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(6.r),
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 8.w),
-        child: Row(
-          children: [
-            Icon(icon, color: theme.colorScheme.primary, size: 20.r),
-            SizedBox(width: AppSpacing.md),
-            Text(
-              title,
-              style: theme.textTheme.titleMedium?.copyWith(
-                color: theme.colorScheme.onSurface,
-              ),
-            ),
-            const Spacer(),
-            Icon(Icons.arrow_forward_ios,
-                color: theme.colorScheme.onSurfaceVariant, size: 16.r),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
