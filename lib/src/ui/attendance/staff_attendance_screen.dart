@@ -1,5 +1,5 @@
 import '../../imports/imports.dart';
-import 'providers/attendance_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/attendance_providers.dart';
 import 'attendance_table.dart';
 
 class StaffAttendanceScreen extends ConsumerWidget {

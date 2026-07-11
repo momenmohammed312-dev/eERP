@@ -1,7 +1,7 @@
 import 'package:edu_erp/src/domain/wallet/entities/wallet_transaction_entity.dart';
 import 'package:edu_erp/src/application/wallet/use_cases/get_wallet_transactions_use_case.dart';
 import '../../imports/imports.dart';
-import 'providers/wallet_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/wallet_providers.dart';
 
 class WalletScreen extends ConsumerWidget {
   const WalletScreen({super.key});

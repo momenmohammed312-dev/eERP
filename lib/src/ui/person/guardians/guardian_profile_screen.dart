@@ -1,5 +1,5 @@
 import 'package:edu_erp/src/imports/imports.dart';
-import '../providers/guardian_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/guardian_providers.dart';
 
 class GuardianProfileScreen extends ConsumerWidget {
   const GuardianProfileScreen({super.key});

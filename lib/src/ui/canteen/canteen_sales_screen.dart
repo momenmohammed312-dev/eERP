@@ -1,7 +1,7 @@
 import 'package:edu_erp/src/domain/canteen/entities/canteen_sale_entity.dart';
 import 'package:edu_erp/src/application/canteen/use_cases/get_all_canteen_sales_use_case.dart';
 import '../../imports/imports.dart';
-import 'providers/canteen_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/canteen_providers.dart';
 
 class CanteenSalesScreen extends ConsumerWidget {
   const CanteenSalesScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:edu_erp/src/application/employee/use_cases/get_all_employees_use_case.dart';
 import 'package:edu_erp/src/domain/employee/entities/employee_entity.dart';
 import '../../../imports/imports.dart';
-import '../providers/employee_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/employee_providers.dart';
 import '../students/student_list_status_chip.dart';
 
 class EmployeeListScreen extends ConsumerWidget {

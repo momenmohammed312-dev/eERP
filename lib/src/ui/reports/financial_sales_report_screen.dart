@@ -1,6 +1,6 @@
 import '../../imports/imports.dart';
-import '../../ui/canteen/providers/canteen_providers.dart';
-import '../../ui/finance/providers/finance_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/canteen_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/finance_providers.dart';
 import 'package:edu_erp/src/domain/canteen/entities/canteen_sale_entity.dart';
 import 'package:edu_erp/src/domain/finance/entities/receipt_entity.dart';
 import 'widgets/financial_sales_summary.dart';

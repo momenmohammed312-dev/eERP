@@ -1,7 +1,7 @@
 import 'package:edu_erp/src/application/role/use_cases/get_all_roles_use_case.dart';
 import 'package:edu_erp/src/domain/role/entities/role_entity.dart';
 import '../../../imports/imports.dart';
-import '../providers/role_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/role_providers.dart';
 
 class RoleListScreen extends ConsumerWidget {
   const RoleListScreen({super.key});

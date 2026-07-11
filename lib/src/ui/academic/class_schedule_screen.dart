@@ -1,5 +1,5 @@
 import '../../imports/imports.dart';
-import 'providers/academic_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/academic_providers.dart';
 
 class ClassScheduleScreen extends ConsumerWidget {
   const ClassScheduleScreen({super.key});

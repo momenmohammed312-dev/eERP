@@ -1,7 +1,7 @@
 import 'package:printing/printing.dart';
 import '../../imports/imports.dart';
-import 'providers/academic_providers.dart';
-import '../settings/providers/settings_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/academic_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/settings_providers.dart';
 import 'widgets/grades_report_pdf_builder.dart';
 
 class GradesReportPrintScreen extends ConsumerStatefulWidget {

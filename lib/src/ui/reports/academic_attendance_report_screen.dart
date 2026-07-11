@@ -1,5 +1,5 @@
 import '../../imports/imports.dart';
-import '../../ui/attendance/providers/attendance_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/attendance_providers.dart';
 import 'package:edu_erp/src/domain/attendance/entities/attendance_record_entity.dart';
 import 'widgets/attendance_report_table.dart';
 import 'widgets/report_error_state.dart';

@@ -1,5 +1,5 @@
 import '../../imports/imports.dart';
-import 'providers/academic_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/academic_providers.dart';
 
 class ExamManagementScreen extends ConsumerWidget {
   const ExamManagementScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:edu_erp/src/application/user_account/use_cases/get_all_user_accounts_use_case.dart';
 import 'package:edu_erp/src/domain/user_account/entities/user_account_entity.dart';
 import '../../../imports/imports.dart';
-import '../providers/user_account_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/user_account_providers.dart';
 import '../students/student_list_status_chip.dart';
 
 class UserAccountListScreen extends ConsumerWidget {

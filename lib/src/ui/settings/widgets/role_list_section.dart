@@ -1,6 +1,6 @@
 import '../../../imports/imports.dart';
 import '../../../domain/role/entities/role_entity.dart';
-import '../../person/providers/role_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/role_providers.dart';
 
 class RoleListSection extends ConsumerStatefulWidget {
   const RoleListSection({super.key});

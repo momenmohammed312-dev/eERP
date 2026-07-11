@@ -1,7 +1,7 @@
 import 'package:edu_erp/src/domain/finance/entities/expense_entity.dart';
 import 'package:edu_erp/src/application/finance/use_cases/get_all_expenses_use_case.dart';
 import '../../imports/imports.dart';
-import 'providers/finance_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/finance_providers.dart';
 
 class ExpensesScreen extends ConsumerWidget {
   const ExpensesScreen({super.key});

@@ -1,5 +1,5 @@
 import '../../imports/imports.dart';
-import 'providers/inventory_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/inventory_providers.dart';
 import 'items_table.dart';
 
 class InventoryScreen extends ConsumerWidget {

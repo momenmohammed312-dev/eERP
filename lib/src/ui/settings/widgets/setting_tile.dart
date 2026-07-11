@@ -1,6 +1,6 @@
 import '../../../imports/imports.dart';
 import '../../../domain/settings/entities/setting_entity.dart';
-import '../providers/settings_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/settings_providers.dart';
 
 class SettingTile extends ConsumerWidget {
   const SettingTile({super.key, required this.setting});

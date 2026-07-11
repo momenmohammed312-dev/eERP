@@ -1,7 +1,7 @@
 import '../../imports/imports.dart';
-import '../../ui/person/providers/student_providers.dart';
-import '../../ui/attendance/providers/attendance_providers.dart';
-import '../../ui/finance/providers/finance_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/student_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/attendance_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/finance_providers.dart';
 import 'widgets/kpi_section.dart';
 import 'widgets/report_error_state.dart';
 import 'widgets/report_header.dart';

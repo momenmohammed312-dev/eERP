@@ -1,6 +1,6 @@
 import 'package:edu_erp/src/domain/academic/entities/section_assignment_entity.dart';
 import '../../imports/imports.dart';
-import 'providers/academic_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/academic_providers.dart';
 
 class SectionAssignmentScreen extends ConsumerWidget {
   const SectionAssignmentScreen({super.key});

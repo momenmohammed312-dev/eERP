@@ -1,7 +1,7 @@
 import 'package:printing/printing.dart';
 import '../../imports/imports.dart';
-import 'providers/finance_providers.dart';
-import '../settings/providers/settings_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/finance_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/settings_providers.dart';
 import 'widgets/financial_report_pdf_builder.dart';
 
 class FinancialReportPrintScreen extends ConsumerStatefulWidget {

@@ -1,5 +1,5 @@
 import '../../imports/imports.dart';
-import 'providers/finance_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/finance_providers.dart';
 import 'payroll_table.dart';
 
 class PayrollScreen extends ConsumerWidget {

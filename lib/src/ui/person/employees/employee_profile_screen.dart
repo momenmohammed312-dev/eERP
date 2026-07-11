@@ -1,5 +1,5 @@
 import 'package:edu_erp/src/imports/imports.dart';
-import '../providers/employee_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/employee_providers.dart';
 
 class EmployeeProfileScreen extends ConsumerWidget {
   const EmployeeProfileScreen({super.key});

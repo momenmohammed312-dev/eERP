@@ -1,5 +1,5 @@
 import '../../imports/imports.dart';
-import 'providers/library_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/library_providers.dart';
 import 'borrowings_table.dart';
 
 class BorrowingLogScreen extends ConsumerWidget {

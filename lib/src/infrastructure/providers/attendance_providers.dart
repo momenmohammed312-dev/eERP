@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:edu_erp/src/ui/person/providers/database_provider.dart';
+import 'package:edu_erp/src/infrastructure/providers/database_provider.dart';
 import 'package:edu_erp/src/infrastructure/database/daos/attendance_dao.dart';
 import 'package:edu_erp/src/infrastructure/repositories/attendance/attendance_repository_impl.dart';
 import 'package:edu_erp/src/domain/attendance/repositories/attendance_repository.dart';

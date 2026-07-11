@@ -1,5 +1,5 @@
 import '../../imports/imports.dart';
-import 'providers/finance_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/finance_providers.dart';
 import 'receipts_table.dart';
 
 class ReceiptsScreen extends ConsumerWidget {

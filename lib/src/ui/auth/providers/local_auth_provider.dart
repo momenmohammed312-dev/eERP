@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/legacy.dart';
 import 'package:edu_erp/src/domain/user_account/entities/user_account_entity.dart';
 import 'package:edu_erp/src/shared/helpers/password_hasher.dart';
 import 'package:edu_erp/src/shared/helpers/show_toast.dart';
-import '../../person/providers/user_account_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/user_account_providers.dart';
 
 enum SessionStatus { unknown, authenticated, unauthenticated }
 

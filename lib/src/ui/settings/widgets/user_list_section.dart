@@ -1,6 +1,6 @@
 import '../../../imports/imports.dart';
 import '../../../domain/user_account/entities/user_account_entity.dart';
-import '../../person/providers/user_account_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/user_account_providers.dart';
 
 class UserListSection extends ConsumerStatefulWidget {
   const UserListSection({super.key});

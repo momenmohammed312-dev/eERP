@@ -1,7 +1,7 @@
 import 'package:edu_erp/src/domain/inventory/entities/supplier_entity.dart';
 import 'package:edu_erp/src/application/inventory/use_cases/get_all_suppliers_use_case.dart';
 import '../../imports/imports.dart';
-import 'providers/inventory_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/inventory_providers.dart';
 
 class SuppliersScreen extends ConsumerWidget {
   const SuppliersScreen({super.key});

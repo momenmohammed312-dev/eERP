@@ -4,11 +4,11 @@ import '../../domain/teacher/entities/teacher_entity.dart';
 import '../../domain/finance/entities/receipt_entity.dart';
 import '../../domain/attendance/entities/attendance_record_entity.dart';
 import '../../domain/person/entities/person_entity.dart';
-import '../person/providers/student_providers.dart';
-import '../person/providers/teacher_providers.dart';
-import '../person/providers/person_providers.dart';
-import '../finance/providers/finance_providers.dart';
-import '../attendance/providers/attendance_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/student_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/teacher_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/person_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/finance_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/attendance_providers.dart';
 
 class DashboardData {
   final List<StudentEntity> students;

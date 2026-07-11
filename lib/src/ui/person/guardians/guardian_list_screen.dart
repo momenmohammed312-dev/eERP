@@ -1,7 +1,7 @@
 import 'package:edu_erp/src/application/guardian/use_cases/get_all_guardians_use_case.dart';
 import 'package:edu_erp/src/domain/guardian/entities/guardian_entity.dart';
 import '../../../imports/imports.dart';
-import '../providers/guardian_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/guardian_providers.dart';
 
 class GuardianListScreen extends ConsumerWidget {
   const GuardianListScreen({super.key});

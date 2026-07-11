@@ -1,7 +1,7 @@
 import 'package:edu_erp/src/application/student/use_cases/get_all_students_use_case.dart';
 import 'package:edu_erp/src/domain/student/entities/student_entity.dart';
 import '../../../imports/imports.dart';
-import '../providers/student_providers.dart';
+import 'package:edu_erp/src/infrastructure/providers/student_providers.dart';
 import 'student_list_actions.dart';
 import 'student_list_status_chip.dart';
 
