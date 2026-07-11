@@ -1,7 +1,7 @@
-import 'package:edu_erp/src/imports/core_imports.dart';
-import 'package:edu_erp/src/imports/packages_imports.dart';
+import '../../imports/core_imports.dart';
+import '../../imports/packages_imports.dart';
 
-import 'package:edu_erp/src/ui/auth/providers/session_provider.dart';
+import '../../ui/auth/providers/session_provider.dart';
 
 
 class SessionListenerWrapper extends ConsumerWidget {

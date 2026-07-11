@@ -22,9 +22,9 @@ class TeacherListScreen extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(
+              const Expanded(
                 child: TextField(
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: 'بحث باسم المعلم أو التخصص...',
                     prefixIcon: Icon(Icons.search),
                   ),

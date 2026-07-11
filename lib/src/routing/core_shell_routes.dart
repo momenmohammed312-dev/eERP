@@ -1,7 +1,22 @@
 import 'package:go_router/go_router.dart';
-import 'package:edu_erp/src/routing/app_routes.dart';
-import 'package:edu_erp/src/ui/home/dashboard_screen.dart';
-import 'package:edu_erp/src/ui/shared/feature_scaffold_screen.dart';
+import 'app_routes.dart';
+import '../ui/home/dashboard_screen.dart';
+import '../ui/shared/feature_scaffold_screen.dart';
+import '../ui/attendance/staff_attendance_screen.dart';
+import '../ui/finance/tuition_fees_screen.dart';
+import '../ui/finance/receipts_screen.dart';
+import '../ui/finance/payroll_screen.dart';
+import '../ui/finance/expenses_screen.dart';
+import '../ui/finance/financial_report_print_screen.dart';
+import '../ui/academic/grades_report_print_screen.dart';
+import '../ui/wallet/wallet_screen.dart';
+import '../ui/canteen/canteen_sales_screen.dart';
+import '../ui/library/library_screen.dart';
+import '../ui/library/borrowing_log_screen.dart';
+import '../ui/inventory/inventory_screen.dart';
+import '../ui/inventory/suppliers_screen.dart';
+import '../ui/inventory/purchase_management_screen.dart';
+import '../ui/inventory/new_inventory_item_screen.dart';
 
 List<RouteBase> buildCoreShellRoutes() => [
       GoRoute(
@@ -28,122 +43,77 @@ List<RouteBase> buildCoreShellRoutes() => [
       GoRoute(
         path: AppRoutes.tuitionFees,
         name: 'tuitionFees',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'رسوم الطلاب',
-          subtitle: 'إدارة الرسوم الدراسية والمستحقات.',
-        ),
+        builder: (_, __) => const TuitionFeesScreen(),
       ),
       GoRoute(
         path: AppRoutes.canteenSales,
         name: 'canteenSales',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'مبيعات المقصف',
-          subtitle: 'تسجيل مبيعات المقصف اليومية.',
-        ),
+        builder: (_, __) => const CanteenSalesScreen(),
       ),
       GoRoute(
         path: AppRoutes.staffAttendance,
         name: 'staffAttendance',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'سجل حضور الموظفين والمعلمين',
-          subtitle: 'متابعة الحضور والانصراف اليومية.',
-        ),
+        builder: (_, __) => const StaffAttendanceScreen(),
       ),
       GoRoute(
         path: AppRoutes.newReceipt,
         name: 'newReceipt',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'سند قبض جديد',
-          subtitle: 'إدخال سندات القبض وتوثيق المدفوعات.',
-        ),
+        builder: (_, __) => const ReceiptsScreen(),
       ),
       GoRoute(
         path: AppRoutes.payroll,
         name: 'payroll',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'إدارة الرواتب',
-          subtitle: 'إدارة الرواتب والاستقطاعات والبدلات.',
-        ),
+        builder: (_, __) => const PayrollScreen(),
       ),
       GoRoute(
         path: AppRoutes.expenses,
         name: 'expenses',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'إدارة المصروفات',
-          subtitle: 'متابعة المصروفات اليومية والتشغيلية.',
-        ),
+        builder: (_, __) => const ExpensesScreen(),
       ),
       GoRoute(
         path: AppRoutes.financialReportPrint,
         name: 'financialReportPrint',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'التقرير المالي - نسخة الطباعة',
-          subtitle: 'معاينة نسخة الطباعة للتقرير المالي.',
-        ),
+        builder: (_, __) => const FinancialReportPrintScreen(),
       ),
       GoRoute(
         path: AppRoutes.gradesReportPrint,
         name: 'gradesReportPrint',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'كشف درجات الطالب - نسخة الطباعة',
-          subtitle: 'معاينة نسخة الطباعة لكشف الدرجات.',
-        ),
+        builder: (_, __) => const GradesReportPrintScreen(),
       ),
       GoRoute(
         path: AppRoutes.wallet,
         name: 'wallet',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'المحفظة الإلكترونية',
-          subtitle: 'عرض رصيد الطالب وسجل المعاملات.',
-        ),
+        builder: (_, __) => const WalletScreen(),
       ),
       GoRoute(
         path: AppRoutes.library,
         name: 'library',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'إدارة المكتبة',
-          subtitle: 'متابعة الكتب والفهرسة الداخلية.',
-        ),
+        builder: (_, __) => const LibraryScreen(),
       ),
       GoRoute(
         path: AppRoutes.borrowingLog,
         name: 'borrowingLog',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'سجل الاستعارة',
-          subtitle: 'تسجيل عمليات الاستعارة والإرجاع.',
-        ),
+        builder: (_, __) => const BorrowingLogScreen(),
       ),
       GoRoute(
         path: AppRoutes.inventory,
         name: 'inventory',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'إدارة المخزون',
-          subtitle: 'عرض الأصناف والكميات المتاحة.',
-        ),
+        builder: (_, __) => const InventoryScreen(),
       ),
       GoRoute(
         path: AppRoutes.newInventoryItem,
         name: 'newInventoryItem',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'إضافة صنف مخزون جديد',
-          subtitle: 'إدخال صنف جديد ضمن المخزون.',
-        ),
+        builder: (_, __) => const NewInventoryItemScreen(),
       ),
       GoRoute(
         path: AppRoutes.purchaseManagement,
         name: 'purchaseManagement',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'إدارة المشتريات',
-          subtitle: 'متابعة أوامر الشراء والموردين.',
-        ),
+        builder: (_, __) => const PurchaseManagementScreen(),
       ),
       GoRoute(
         path: AppRoutes.suppliers,
         name: 'suppliers',
-        builder: (_, __) => const FeatureScaffoldScreen(
-          title: 'سجل الموردين',
-          subtitle: 'إدارة الموردين وبيانات الاتصال.',
-        ),
+        builder: (_, __) => const SuppliersScreen(),
       ),
       GoRoute(
         path: AppRoutes.academicAttendanceReports,

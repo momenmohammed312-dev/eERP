@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'package:edu_erp/src/imports/core_imports.dart';
-import 'package:edu_erp/src/imports/packages_imports.dart';
-import 'package:edu_erp/src/data/models/user_model.dart';
-import 'package:edu_erp/src/data/repositories/auth_repository.dart';
+import '../../imports/core_imports.dart';
+import '../../imports/packages_imports.dart';
+import '../models/user_model.dart';
+import 'auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final _authController = StreamController<AppUser?>.broadcast();

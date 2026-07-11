@@ -14,7 +14,7 @@ class AppShell extends ConsumerWidget {
 
     // Sidebar Items list grouped by domain
     final menuGroups = [
-      _MenuGroup(
+      const _MenuGroup(
         title: 'الرئيسية',
         items: [
           _MenuItem(
@@ -24,7 +24,7 @@ class AppShell extends ConsumerWidget {
           ),
         ],
       ),
-      _MenuGroup(
+      const _MenuGroup(
         title: 'المستخدمين',
         items: [
           _MenuItem(
@@ -37,9 +37,34 @@ class AppShell extends ConsumerWidget {
             icon: Icons.person_outline,
             route: AppRoutes.teachers,
           ),
+          _MenuItem(
+            title: 'أولياء الأمور',
+            icon: Icons.family_restroom,
+            route: AppRoutes.guardians,
+          ),
+          _MenuItem(
+            title: 'الموظفون',
+            icon: Icons.badge_outlined,
+            route: AppRoutes.employees,
+          ),
         ],
       ),
-      _MenuGroup(
+      const _MenuGroup(
+        title: 'الصلاحيات',
+        items: [
+          _MenuItem(
+            title: 'الأدوار',
+            icon: Icons.admin_panel_settings_outlined,
+            route: AppRoutes.roles,
+          ),
+          _MenuItem(
+            title: 'حسابات المستخدمين',
+            icon: Icons.manage_accounts_outlined,
+            route: AppRoutes.userAccounts,
+          ),
+        ],
+      ),
+      const _MenuGroup(
         title: 'الأكاديميات',
         items: [
           _MenuItem(
@@ -59,42 +84,102 @@ class AppShell extends ConsumerWidget {
           ),
         ],
       ),
-      _MenuGroup(
+      const _MenuGroup(
         title: 'المالية',
         items: [
           _MenuItem(
-            title: 'الرسوم والمصاريف',
+            title: 'رسوم الطلاب',
             icon: Icons.payments_outlined,
             route: AppRoutes.tuitionFees,
           ),
           _MenuItem(
-            title: 'المبيعات والمقصف',
+            title: 'سندات القبض',
+            icon: Icons.receipt_outlined,
+            route: AppRoutes.newReceipt,
+          ),
+          _MenuItem(
+            title: 'الرواتب',
+            icon: Icons.account_balance_wallet_outlined,
+            route: AppRoutes.payroll,
+          ),
+          _MenuItem(
+            title: 'المصروفات',
+            icon: Icons.money_off_outlined,
+            route: AppRoutes.expenses,
+          ),
+          _MenuItem(
+            title: 'المقصف',
             icon: Icons.shopping_cart_outlined,
             route: AppRoutes.canteenSales,
           ),
         ],
       ),
-      _MenuGroup(
-        title: 'الإدارة',
+      const _MenuGroup(
+        title: 'الحضور',
         items: [
           _MenuItem(
-            title: 'المكتبة',
+            title: 'سجل الحضور',
+            icon: Icons.fact_check_outlined,
+            route: AppRoutes.staffAttendance,
+          ),
+        ],
+      ),
+      const _MenuGroup(
+        title: 'المحفظة',
+        items: [
+          _MenuItem(
+            title: 'المحفظة الإلكترونية',
+            icon: Icons.account_balance_outlined,
+            route: AppRoutes.wallet,
+          ),
+        ],
+      ),
+      const _MenuGroup(
+        title: 'المكتبة',
+        items: [
+          _MenuItem(
+            title: 'الكتب',
             icon: Icons.local_library_outlined,
             route: AppRoutes.library,
           ),
           _MenuItem(
-            title: 'المخزون',
+            title: 'الاستعارة',
+            icon: Icons.swap_horiz_outlined,
+            route: AppRoutes.borrowingLog,
+          ),
+        ],
+      ),
+      const _MenuGroup(
+        title: 'المخزون',
+        items: [
+          _MenuItem(
+            title: 'الأصناف',
             icon: Icons.inventory_2_outlined,
             route: AppRoutes.inventory,
           ),
           _MenuItem(
-            title: 'التقارير',
+            title: 'المشتريات',
+            icon: Icons.shopping_bag_outlined,
+            route: AppRoutes.purchaseManagement,
+          ),
+          _MenuItem(
+            title: 'الموردين',
+            icon: Icons.people_outline,
+            route: AppRoutes.suppliers,
+          ),
+        ],
+      ),
+      const _MenuGroup(
+        title: 'التقارير',
+        items: [
+          _MenuItem(
+            title: 'تقارير الأداء',
             icon: Icons.bar_chart_outlined,
             route: AppRoutes.performanceReports,
           ),
         ],
       ),
-      _MenuGroup(
+      const _MenuGroup(
         title: 'النظام',
         items: [
           _MenuItem(

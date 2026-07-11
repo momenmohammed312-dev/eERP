@@ -1,20 +1,16 @@
+import 'package:edu_erp/src/application/student/use_cases/get_all_students_use_case.dart';
+import 'package:edu_erp/src/domain/student/entities/student_entity.dart';
 import '../../../imports/imports.dart';
+import '../providers/student_providers.dart';
 import 'student_list_actions.dart';
 import 'student_list_status_chip.dart';
 
-class StudentListScreen extends StatelessWidget {
+class StudentListScreen extends ConsumerWidget {
   const StudentListScreen({super.key});
 
-  static const _students = [
-    ['محمد أحمد علي', 'الثالث الثانوي - أ', 'نشط'],
-    ['سارة محمود يوسف', 'الأول الثانوي - ب', 'نشط'],
-    ['خالد عبد الرحمن', 'الثاني الثانوي - أ', 'نشط'],
-    ['رنا طارق سعيد', 'الثالث الثانوي - ب', 'موقوف'],
-  ];
-
   @override
-  Widget build(BuildContext context) {
-    final theme = context.theme;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final getAll = ref.read(getAllStudentsUseCase);
     return SingleChildScrollView(
       padding: EdgeInsets.all(AppSpacing.margin),
       child: Column(
@@ -22,9 +18,9 @@ class StudentListScreen extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(
+              const Expanded(
                 child: TextField(
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: 'بحث باسم الطالب أو الصف...',
                     prefixIcon: Icon(Icons.search),
                   ),
@@ -39,26 +35,53 @@ class StudentListScreen extends StatelessWidget {
             ],
           ),
           SizedBox(height: AppSpacing.lg),
-          AppDataTable(
-            columns: const ['اسم الطالب', 'الصف', 'الحالة', 'إجراءات'],
-            rows: _students.map((s) {
-              return [
-                Text(s[0], style: const TextStyle(fontWeight: FontWeight.w600)),
-                Text(s[1]),
-                StudentListStatusChip(label: s[2]),
-                const StudentListActions(),
-              ];
-            }).toList(),
-          ),
-          SizedBox(height: AppSpacing.sm),
-          Text(
-            'عرض ${_students.length} طلاب',
-            style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurfaceVariant,
-            ),
-          ),
+          _StudentDataTable(getAll: getAll),
         ],
       ),
+    );
+  }
+}
+
+class _StudentDataTable extends StatelessWidget {
+  const _StudentDataTable({required this.getAll});
+  final GetAllStudentsUseCase getAll;
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<StudentEntity>>(
+      future: getAll(),
+      builder: (_, snap) {
+        if (snap.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        final students = snap.data ?? [];
+        if (students.isEmpty) {
+          return const AppEmptyState(
+            title: 'لا يوجد طلاب',
+            subtitle: 'قم بإضافة أول طالب في النظام.',
+          );
+        }
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AppDataTable(
+              columns: const ['رقم القيد', 'الحالة', 'إجراءات'],
+              rows: students.map((s) {
+                return [
+                  Text('#${s.id}',
+                      style: const TextStyle(fontWeight: FontWeight.w600)),
+                  StudentListStatusChip(label: s.status ? 'نشط' : 'موقوف'),
+                  StudentListActions(studentId: s.id),
+                ];
+              }).toList(),
+            ),
+            SizedBox(height: AppSpacing.sm),
+            Text('عرض ${students.length} طلاب',
+                style: context.theme.textTheme.bodySmall?.copyWith(
+                    color: context.theme.colorScheme.onSurfaceVariant)),
+          ],
+        );
+      },
     );
   }
 }

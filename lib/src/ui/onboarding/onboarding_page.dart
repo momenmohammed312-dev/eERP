@@ -1,4 +1,4 @@
-import 'package:edu_erp/src/imports/imports.dart';
+import '../../imports/imports.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});

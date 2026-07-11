@@ -20,30 +20,30 @@ class _StudentFormScreenState extends State<StudentFormScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text('Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ø·Ø§Ù„Ø¨', style: context.theme.textTheme.titleLarge),
+              Text('بيانات الطالب', style: context.theme.textTheme.titleLarge),
               SizedBox(height: AppSpacing.lg),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Ø§Ù„Ø§Ø³Ù… Ø§Ù„ÙƒØ§Ù…Ù„'),
+                decoration: const InputDecoration(labelText: 'الاسم الكامل'),
               ),
               SizedBox(height: AppSpacing.md),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Ø§Ù„ØµÙ Ø§Ù„Ø¯Ø±Ø§Ø³ÙŠ'),
+                decoration: const InputDecoration(labelText: 'الصف الدراسي'),
               ),
               SizedBox(height: AppSpacing.md),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Ø±Ù‚Ù… Ø§Ù„Ù‡Ø§ØªÙ'),
+                decoration: const InputDecoration(labelText: 'رقم الهاتف'),
               ),
               SizedBox(height: AppSpacing.xl),
               Row(
                 children: [
                   OutlinedButton(
                     onPressed: () => context.go(AppRoutes.students),
-                    child: const Text('Ø¥Ù„ØºØ§Ø¡'),
+                    child: const Text('إلغاء'),
                   ),
                   SizedBox(width: AppSpacing.sm),
                   ElevatedButton(
                     onPressed: () => context.go(AppRoutes.students),
-                    child: const Text('Ø­ÙØ¸'),
+                    child: const Text('حفظ'),
                   ),
                 ],
               ),

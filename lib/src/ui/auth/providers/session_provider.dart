@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:edu_erp/src/imports/imports.dart';
-import 'package:edu_erp/src/data/models/user_model.dart';
-import 'package:edu_erp/src/data/repositories/auth_repository.dart';
+import '../../../imports/imports.dart';
+import '../../../data/models/user_model.dart';
+import '../../../data/repositories/auth_repository.dart';
 
-import 'package:edu_erp/src/data/repositories/auth_repository_impl.dart';
+import '../../../data/repositories/auth_repository_impl.dart';
 
 /// Provides the AuthRepository instance
 final authRepositoryProvider = Provider<AuthRepository>((ref) {

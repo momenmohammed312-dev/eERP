@@ -1,6 +1,5 @@
-import 'src/imports/core_imports.dart';
-import 'src/imports/packages_imports.dart';
 import 'src/app.dart';
+import 'src/imports/core_imports.dart';
 
 
 Future<void> main() async {

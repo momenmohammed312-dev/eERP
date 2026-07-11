@@ -1,11 +1,11 @@
 import 'package:go_router/go_router.dart';
-import 'package:edu_erp/src/routing/app_routes.dart';
-import 'package:edu_erp/src/ui/academic/subjects_list_screen.dart';
-import 'package:edu_erp/src/ui/academic/classrooms_list_screen.dart';
-import 'package:edu_erp/src/ui/academic/class_schedule_screen.dart';
-import 'package:edu_erp/src/ui/academic/section_assignment_screen.dart';
-import 'package:edu_erp/src/ui/academic/exam_management_screen.dart';
-import 'package:edu_erp/src/ui/academic/grade_entry_screen.dart';
+import 'app_routes.dart';
+import '../ui/academic/subjects_list_screen.dart';
+import '../ui/academic/classrooms_list_screen.dart';
+import '../ui/academic/class_schedule_screen.dart';
+import '../ui/academic/section_assignment_screen.dart';
+import '../ui/academic/exam_management_screen.dart';
+import '../ui/academic/grade_entry_screen.dart';
 
 List<RouteBase> buildAcademicRoutes() => [
       GoRoute(

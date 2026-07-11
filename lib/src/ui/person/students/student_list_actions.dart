@@ -1,7 +1,8 @@
 import '../../../imports/imports.dart';
 
 class StudentListActions extends StatelessWidget {
-  const StudentListActions({super.key});
+  const StudentListActions({super.key, required this.studentId});
+  final int studentId;
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +10,7 @@ class StudentListActions extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         TextButton(
-          onPressed: () => context.go('/students/1'),
+          onPressed: () => context.go('/students/$studentId'),
           child: const Text('عرض'),
         ),
         TextButton(

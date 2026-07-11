@@ -1,8 +1,8 @@
-import 'package:edu_erp/src/imports/core_imports.dart';
-import 'package:edu_erp/src/imports/packages_imports.dart';
+import '../../../imports/core_imports.dart';
+import '../../../imports/packages_imports.dart';
 
-import 'package:edu_erp/src/data/repositories/auth_repository.dart';
-import 'package:edu_erp/src/data/repositories/auth_repository_impl.dart';
+import '../../../data/repositories/auth_repository.dart';
+import '../../../data/repositories/auth_repository_impl.dart';
 
 // Provides the single instance of AuthRepositoryImpl 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {

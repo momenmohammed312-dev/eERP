@@ -1,12 +1,12 @@
 import 'package:go_router/go_router.dart';
-import 'package:edu_erp/src/routing/global_navigator.dart';
-import 'package:edu_erp/src/routing/app_routes.dart';
-import 'package:edu_erp/src/routing/person_routes.dart';
-import 'package:edu_erp/src/routing/academic_routes.dart';
-import 'package:edu_erp/src/routing/core_shell_routes.dart';
-import 'package:edu_erp/src/ui/auth/login_screen.dart';
-import 'package:edu_erp/src/ui/shared/feature_scaffold_screen.dart';
-import 'package:edu_erp/src/shared/widgets/app_shell.dart';
+import 'global_navigator.dart';
+import 'app_routes.dart';
+import 'person_routes.dart';
+import 'academic_routes.dart';
+import 'core_shell_routes.dart';
+import '../ui/auth/login_screen.dart';
+import '../ui/shared/feature_scaffold_screen.dart';
+import '../shared/widgets/app_shell.dart';
 
 final GoRouter appRouter = GoRouter(
   navigatorKey: rootNavigatorKey,

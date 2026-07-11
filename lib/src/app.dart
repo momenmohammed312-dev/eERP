@@ -1,4 +1,4 @@
-import 'package:edu_erp/src/imports/core_imports.dart';
+import 'imports/core_imports.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

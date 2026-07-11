@@ -1,5 +1,5 @@
-import 'package:edu_erp/src/utils/utils.dart';
-import 'package:edu_erp/src/data/models/user_model.dart';
+import '../../utils/utils.dart';
+import '../models/user_model.dart';
 
 abstract class AuthRepository {
   /// Stream of auth state changes. Emits AppUser when authenticated, null when not.

@@ -20,30 +20,30 @@ class _TeacherFormScreenState extends State<TeacherFormScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text('Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ù…Ø¹Ù„Ù…', style: context.theme.textTheme.titleLarge),
+              Text('بيانات المعلم', style: context.theme.textTheme.titleLarge),
               SizedBox(height: AppSpacing.lg),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Ø§Ù„Ø§Ø³Ù… Ø§Ù„ÙƒØ§Ù…Ù„'),
+                decoration: const InputDecoration(labelText: 'الاسم الكامل'),
               ),
               SizedBox(height: AppSpacing.md),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Ø§Ù„ØªØ®ØµØµ'),
+                decoration: const InputDecoration(labelText: 'التخصص'),
               ),
               SizedBox(height: AppSpacing.md),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Ø±Ù‚Ù… Ø§Ù„Ù‡Ø§ØªÙ'),
+                decoration: const InputDecoration(labelText: 'رقم الهاتف'),
               ),
               SizedBox(height: AppSpacing.xl),
               Row(
                 children: [
                   OutlinedButton(
                     onPressed: () => context.go(AppRoutes.teachers),
-                    child: const Text('Ø¥Ù„ØºØ§Ø¡'),
+                    child: const Text('إلغاء'),
                   ),
                   SizedBox(width: AppSpacing.sm),
                   ElevatedButton(
                     onPressed: () => context.go(AppRoutes.teachers),
-                    child: const Text('Ø­ÙØ¸'),
+                    child: const Text('حفظ'),
                   ),
                 ],
               ),

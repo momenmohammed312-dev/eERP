@@ -44,5 +44,9 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# Environment files
+.env
+.env.*
+
 # OpenCode config (may contain API keys)
 opencode.json

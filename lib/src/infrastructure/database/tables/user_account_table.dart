@@ -4,7 +4,7 @@
 import 'package:drift/drift.dart';
 import 'package:edu_erp/src/infrastructure/database/tables/person_table.dart';
 import 'package:edu_erp/src/infrastructure/database/tables/role_table.dart';
-class UserAccountTable extends Table {
+class UserAccount extends Table {
   IntColumn get id => integer().autoIncrement()();
   IntColumn get personId => integer().references(Person, #id)();
   TextColumn get username => text()();

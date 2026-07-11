@@ -1,4 +1,4 @@
-import 'package:edu_erp/src/imports/imports.dart';
+import '../../imports/imports.dart';
 
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});
@@ -23,14 +23,14 @@ class DashboardScreen extends ConsumerWidget {
         icon: Icons.person_outline,
         color: theme.colorScheme.secondary,
       ),
-      _StatItem(
+      const _StatItem(
         title: 'المقبوضات المالية اليوم',
         value: '١٥,٤٠٠ ج م',
         subTitle: 'إجمالي سندات القبض اليوم',
         icon: Icons.payments_outlined,
         color: Colors.green,
       ),
-      _StatItem(
+      const _StatItem(
         title: 'نسبة الحضور اليومي',
         value: '٩٤.٢٪',
         subTitle: 'حضور الطلاب والموظفين',

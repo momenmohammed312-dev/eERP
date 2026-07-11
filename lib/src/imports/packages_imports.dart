@@ -1,5 +1,4 @@
 export 'package:fpdart/fpdart.dart' hide State;
-export 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:equatable/equatable.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,7 +17,6 @@ export 'package:path_provider/path_provider.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:permission_handler/permission_handler.dart';
 export 'package:device_info_plus/device_info_plus.dart';
-export 'package:app_version_update/app_version_update.dart';
 export 'package:google_fonts/google_fonts.dart';
 
 

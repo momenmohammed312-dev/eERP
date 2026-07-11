@@ -7,5 +7,5 @@ class Guardian extends Table {
   IntColumn get id => integer().autoIncrement()();
   IntColumn get personId => integer().references(Person, #id)();
   TextColumn get relationToStudent => text().nullable()();
-  BoolColumn get isPrimaryContact => boolean().withDefault(false as Expression<bool>)();
+  BoolColumn get isPrimaryContact => boolean().withDefault(const Constant(false))();
 }
